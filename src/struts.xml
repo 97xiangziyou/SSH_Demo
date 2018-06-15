@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!-- 设置上传文件大小 -->
+<!--  	<constant name="struts.multipart.maxSize" value="209715200"></constant>-->
+	<package name="demo1" extends="struts-default" namespace="/">
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="loginsuccess">/jsp/index.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+  	
+		<action name="customer_*" class="customerAction" method="{1}">
+			<!-- 到添加页面 -->
+			<result name="toAddPage">/jsp/customer/add.jsp</result>
+			<!-- 添加之后 -->
+			<result name="add" type="redirectAction">customer_list</result>
+			<!-- 列表页面 -->
+			<result name="list">/jsp/customer/list.jsp</result>
+			<!-- 删除之后重新回到列表页面 此时使用Action重定向功能 -->
+			<result name="delete" type="redirectAction">customer_list</result>	
+			<!-- 到修改页面-->
+			<result name="showCustomer">/jsp/customer/edit.jsp</result>
+			<!-- 修改完成重定向到列表页面 -->
+			<result name="update" type="redirectAction">customer_list</result>
+			<!-- 到分页客户列表页面 -->
+			<result name="listpage">/jsp/customer/listpage.jsp</result>
+			<!-- 条件查询 -->
+			<result name="listcondition">/jsp/customer/list.jsp</result>
+			<!-- 综合查询 -->
+			<result name="select">/select/select.jsp</result>
+			<result name="findMoreCondition">/jsp/customer/list.jsp</result>
+			<!-- 按照客户来源查询 -->
+			<result name="listSource">/jsp/customer/listSource.jsp</result>
+			<!-- 按照客户等级来查询 -->
+			<result name="listLevel">/jsp/customer/listLevel.jsp</result>
+		</action>
+
+
+		<action name="linkman_*" class="linkManAction" method="{1}">
+			<!-- 到添加页面 -->
+			<result name="toAddPage">/jsp/linkman/add.jsp</result>
+			<!-- 添加之后 -->
+			<result name="add" type="redirectAction">linkman_list</result>
+			<!-- 配置input结果 -->
+			<result name="input">/jsp/error.jsp</result>
+			<!-- 列表页面 -->
+			<result name="list">/jsp/linkman/list.jsp</result>
+			<!-- 删除之后重新回到列表页面 此时使用Action重定向功能 -->
+			<result name="delete" type="redirectAction">linkman_list</result>	
+			<!-- 到修改页面-->
+			<result name="showlinkMan">/jsp/linkman/edit.jsp</result>
+			<!-- 修改完成重定向到列表页面 -->
+			<result name="update" type="redirectAction">linkman_list</result>
+			<!-- 到查询联系人页面 -->
+			<result name="toselectLinkMan">/select/linkman.jsp</result>		
+			<!-- 查询完跳转到list页面 -->
+			
+			<result name="moreCondition">/jsp/linkman/list.jsp</result>
+			</action>
+	
+	
+		<action name="visit_*" class="visitAction" method="{1}">
+			<result name="toAddPage">/jsp/visit/add.jsp</result>
+			<result name="addVisit">/jsp/success.jsp</result>
+			<result name="list">/jsp/visit/list.jsp</result>
+			<result name="delete">/jsp/success.jsp</result>
+			
+		</action>
+		
+	</package>
+
+</struts>
